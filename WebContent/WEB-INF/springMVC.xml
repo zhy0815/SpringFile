@@ -20,5 +20,13 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
 		<property name="defaultEncoding" value="utf-8"></property>
-	</bean>   
+	</bean> 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截所有请求 -->
+			<mvc:mapping path="/*"/>
+			<!-- 使用bean定义一个Interceptor -->
+			<bean class="com.zhy.util.AuthorizationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>  
 </beans>        
